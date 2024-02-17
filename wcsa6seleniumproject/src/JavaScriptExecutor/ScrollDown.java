@@ -27,5 +27,6 @@ public class ScrollDown {
 			Thread.sleep(2000);
 			jse.executeScript("window.scrollBy(-5000,0)");
 		}
+		driver.close();
 	}
 }

@@ -8,21 +8,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class ToHandleHiddenWebElement {
-
+public class ToScrollTillParticularWebelement {
 	public static void main(String[] args) throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
 		WebDriver driver= new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-		driver.get("https://demoapps.qspiders.com/ui?scenario=1");
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//li[text()='Disabled']")).click();
-		WebElement hiddenEle = driver.findElement(By.xpath("//input[@id='name']"));
-		JavascriptExecutor js=(JavascriptExecutor)driver;
-		//js.executeScript("document.getElementById('name').value='admin'");
-		js.executeScript("arguments[0].value='admin'", hiddenEle);
-		driver.close();
+		driver.get("https://www.selenium.dev/");
+		
+		WebElement scrollTarget = driver.findElement(By.xpath("//h2[text()='News']"));
+		JavascriptExecutor js= (JavascriptExecutor)driver;
+		//Thread.sleep(2000);
+		js.executeScript("arguments[0].scrollIntoView(true)", scrollTarget);
+		//driver.close();
 	}
-
 }
